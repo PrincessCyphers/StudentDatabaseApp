@@ -13,6 +13,9 @@ public class StudentDatabaseApp {
     public static void main(String[] args) {
         // ask how mny students are being entered
         Student stu1 = new Student();
+        stu1.enroll();
+        stu1.payTuition();
+
 
         // create n number of students
 
