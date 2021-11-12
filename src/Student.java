@@ -4,9 +4,10 @@ public class Student {
     private String firstName;
     private String lastName;
     private String studentYear;
-    private int studentID;
-    private String courses;
-    private int courseCost = 600;
+    private String studentID;
+    private static int ID = 1000;
+    private String courses = " ";
+    private static int courseCost = 600;
     private int balance;
     private int tuitionBalance;
 
@@ -14,30 +15,59 @@ public class Student {
 
     public Student (){
             Scanner in = new Scanner(System.in);
-            System.out.print("Enter student First name");
+            System.out.print("Enter student First name: ");
             this.firstName = in.nextLine();
 
-            System.out.print("Enter student Last name");
+            System.out.print("Enter student Last name: ");
             this.lastName = in.nextLine();
 
             System.out.print("Grade Placement: \n1 - Year 10\n2 - Year 11\n3 - Year 12/ Lower 6th Form\n4- Year 13/ Upper 6th Form\nEnter Student's placement: ");
             this.studentYear = in.nextLine();
-            System.out.println(firstName + " " + lastName + " will be in " + studentYear);
 
-            // ("Courses available: \n1 - History 101\n2 - Mathematics 101\n3 - English 101\n4 - Chemistry 101\n5 - Computer Sciences 101\nEnter Student Course"
+            setStudentID();
+            System.out.println(firstName + " " + lastName + " will be in " + studentYear + " " + studentID);
+
     }
 
+        // Generate ID using grade as first number
+    private void setStudentID() {
+        ID++;
+        this.studentID = studentYear + "" + ID;
+    }
+        // Course enrollment "\\
+    public void enroll () {
+        System.out.println("Courses available: \nHistory 101 \nMathematics 101 \nEnglish 101 \nChemistry 101 \nComputer Sciences 101");
+        do {
+            System.out.print("Enter course to enroll (Q to quit): ");
+            Scanner in = new Scanner(System.in);
+            String course = in.nextLine();
+            if (!course.equals("Q")) {
+                courses = courses + "\n" + course;
+                tuitionBalance = tuitionBalance + courseCost;
+            }
+            else {break; }
+        } while (1 !=0);
 
+        System.out.println("Enrolled in: " + courses);
+    }
 
-        // Generate ID
+    // View balance
+    public void viewBalance(){
+        System.out.println("Your balance is £" + tuitionBalance);
+    }
 
-        // Course enrollment
+    // Pay Tuition
+    public void payTuition() {
+        viewBalance();
+        System.out.print("Enter your payment: £");
+        Scanner in = new Scanner(System.in);
+        int payment = in.nextInt();
+        tuitionBalance = tuitionBalance - payment;
+        System.out.println("Thank you for your payment of: £" + payment);
+        viewBalance();
+    }
 
-        // View balance
-
-        // Pay Tuition
-
-        // Show status
+    // Show status
 
 
 }
