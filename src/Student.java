@@ -71,5 +71,4 @@ public class Student {
         return "Name: " + firstName + " " + lastName + "\nStudent ID: " + studentID + "\nCourses Enrolled: " + courses + "\nOutstanding Tuition Balance: £" + tuitionBalance;
     }
 
-
 }
